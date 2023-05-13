@@ -1,0 +1,70 @@
+DROP TABLE IF EXISTS first_model; 
+CREATE TABLE IF NOT EXISTS model(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    name TEXT(255) NOT NULL,
+	created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_Disable BIT
+);
+DROP TABLE IF EXISTS VRhelmets; 
+CREATE TABLE IF NOT EXISTS VRhelmets(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    title TEXT(255) NOT NULL,
+    discription TEXT,
+    first_model_id INT,
+    FOREIGN KEY(first_model_id) REFERENCES first_model (id),
+	created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_Disable BIT
+);
+DROP TABLE IF EXISTS VRTrackers; 
+CREATE TABLE IF NOT EXISTS VRTrackers(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    title TEXT(255) NOT NULL,
+    discription TEXT,
+    first_model_id INT,
+    FOREIGN KEY(first_model_id) REFERENCES first_model (id),
+	created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_Disable BIT
+);
+
+
+
+
+
+DROP TABLE IF EXISTS model; 
+CREATE TABLE IF NOT EXISTS model(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    name TEXT(255) NOT NULL,
+	created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_Disable BIT
+);
+DROP TABLE IF EXISTS VRhelmets; 
+CREATE TABLE IF NOT EXISTS VRhelmets(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    title TEXT(255) NOT NULL,
+    discription TEXT,
+    model_id INT,
+    FOREIGN KEY(model_id) REFERENCES model (id),
+	created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_Disable BIT
+);
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+INSERT INTO model (name) VALUES("oculus");
+INSERT INTO model (name) VALUES("ValveIndex");
+INSERT INTO model (name) VALUES("Sony");
+INSERT INTO model (name) VALUES("HTC");
+INSERT INTO model (name) VALUES("SlimeVR");
+
+
+INSERT INTO VRhelmets(title, model_id) VALUES("Quest 2", 1);
+INSERT INTO VRhelmets(title, model_id) VALUES("Valve Index VR Kit", 2);
+INSERT INTO VRhelmets(title, model_id) VALUES("PlayStation VR", 3);
+INSERT INTO VRhelmets(title, model_id) VALUES("Vive Cosmos", 4);
+INSERT INTO VRhelmets(title, model_id) VALUES("VIVE Pro 2", 4);
+
+INSERT INTO VRTrackers(title, model_id) VALUES("defaultTracker", 5);
+INSERT INTO VRTrackers(title, model_id) VALUES("clearTracker", 5);
